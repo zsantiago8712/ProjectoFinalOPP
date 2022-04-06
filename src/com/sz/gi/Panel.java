@@ -5,15 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serial;
 
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.text.PlainDocument;
 
 
@@ -285,8 +277,12 @@ public class Panel extends JPanel {
 
                 if(validateDataSelector() && validDataFloat()){
                     System.out.println("Todo correcto");
-                }else
+                    JOptionPane.showMessageDialog(null, "Se guardo correctamente", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+                }else {
                     System.out.println("Datos incorrectos");
+                    JOptionPane.showMessageDialog(null, "Se dejo algun dato(s) vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                }
 
             }
         });
@@ -296,8 +292,12 @@ public class Panel extends JPanel {
 
                 if(validateDataSelector() && validDataFloat()){
                     System.out.println("Todo correcto");
-                }else
+                    JOptionPane.showMessageDialog(null, "Se predijo correctamente", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+                }else {
                     System.out.println("Datos incorrectos");
+                    JOptionPane.showMessageDialog(null, "Se dejo algun dato(s) vacio", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

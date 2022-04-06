@@ -6,7 +6,7 @@ public class Main {
         Window app = new Window("app", 90, 90);
 
         app.setVisible(true);
-        DataBase db = new DataBase();
+        //DataBase db = new DataBase();
     }
 
 }

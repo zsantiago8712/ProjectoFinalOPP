@@ -38,7 +38,6 @@ public class DataBase{
     public void DesConnection(){
         if(conn == null){
             System.out.println("Terminó la conexión");
-
         }
     }
 }
