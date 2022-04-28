@@ -1,0 +1,14 @@
+@relation heart_disease
+
+@attribute age real
+@attribute sex {0,1}
+@attribute chest_pain_type {0,1,2,3}
+@attribute blood_pressure float
+@attribute cholesterol float
+@attribute hipertension {0,1}
+@attribute smoker {0, 1}
+@attribute diabetes {0, 1}
+@attribute hdl float
+@attribute max_heartrate float
+
+@data

@@ -1,4 +1,6 @@
-package com.sz.gi;
+package com.sz.vista;
+import com.sz.controler.MyIntFilter;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -19,18 +21,22 @@ public class Panel extends JPanel {
     private final JPanel logoPanel = new JPanel();
     private final JPanel infoPanel = new JPanel();
     private final JPanel panelButtons = new JPanel();
-    private JTextField heartrateText;
-    private JTextField bloodpText;
-    private JTextField cholesterolText;
-    private JTextField hdlText;
-    private JRadioButton diabetesYes;
-    private JRadioButton diabetesNo;
-    private JRadioButton hyperNo;
-    private JRadioButton hyperYes;
-    private JRadioButton smokerNo;
-    private JRadioButton smokerYes;
-    private JRadioButton sexMale;
-    private JRadioButton sexFemale;
+    public JTextField heartrateText;
+    public JTextField bloodpText;
+    public JTextField cholesterolText;
+    public JTextField hdlText;
+    public JRadioButton diabetesYes;
+    public JRadioButton diabetesNo;
+    public JRadioButton hyperNo;
+    public JRadioButton hyperYes;
+    public JRadioButton smokerNo;
+    public JRadioButton smokerYes;
+    public JRadioButton sexMale;
+    public JRadioButton sexFemale;
+    public JButton saveBtn;
+    public JComboBox<String> age;
+    public JComboBox<String> chestpainCbox;
+
 
 
     void setTitlePanel(){
@@ -70,12 +76,13 @@ public class Panel extends JPanel {
         optionsPanel.add(ageText);
         ageText.setColumns(10);*/
 
-        JComboBox<String> age = new JComboBox<String>();
+        age = new JComboBox<String>();
         age.setFont(new Font("Helvetica Neue", Font.PLAIN, 13));
         age.setBounds(124, 16, 130, 26);
         age.setToolTipText("Edad");
         for (int i = 20; i < 76; i++)
             age.addItem(Integer.toString(i));
+
 
         age.addItem("Más de 75");
         optionsPanel.add(age);
@@ -104,7 +111,7 @@ public class Panel extends JPanel {
         chestpainLabel.setBounds(20, 100, 259, 16);
         optionsPanel.add(chestpainLabel);
 
-        JComboBox<String> chestpainCbox = new JComboBox<String>();
+        chestpainCbox = new JComboBox<String>();
         chestpainCbox.setFont(new Font("Helvetica Neue", Font.PLAIN, 13));
         chestpainCbox.addItem("Angina típica");
         chestpainCbox.addItem("Angina atípica");
@@ -229,7 +236,7 @@ public class Panel extends JPanel {
 
         JLabel logoLabel = new JLabel();
         logoLabel.setBounds(0, 6, 201, 90);
-        logoLabel.setIcon(new ImageIcon("/Users/randymarsh/Documents/Proyectos/ProjectoFinalOPP/src/com/sz/gi/Images/logo.png"));
+        logoLabel.setIcon(new ImageIcon("/Users/randymarsh/Documents/Proyectos/ProjectoFinalOPP/src/com/sz/vista/Images/logo.png"));
         logoPanel.add(logoLabel);
     }
 
@@ -251,7 +258,7 @@ public class Panel extends JPanel {
         infoPanel.add(infoText);
 
         JLabel infoImg = new JLabel();
-        infoImg.setIcon(new ImageIcon("/Users/randymarsh/Documents/Proyectos/ProjectoFinalOPP/src/com/sz/gi/Images/Icon.png"));
+        infoImg.setIcon(new ImageIcon("/Users/randymarsh/Documents/Proyectos/ProjectoFinalOPP/src/com/sz/vista/Images/Icon.png"));
         infoImg.setBounds(0, 177, 233, 229);
         infoPanel.add(infoImg);
     }
@@ -262,74 +269,14 @@ public class Panel extends JPanel {
         panelButtons.setBounds(17, 559, 709, 61);
         panelButtons.setLayout(null);
 
-        JButton saveBtn = new JButton("Guardar datos");
-        saveBtn.setBounds(161, 13, 138, 36);
+        saveBtn = new JButton("Guardar datos");
+        saveBtn.setBounds(321, 13, 138, 36);
         saveBtn.setToolTipText("Guardar datos");
         panelButtons.add(saveBtn);
-
-        JButton predictBtn = new JButton("Realizar predicción");
-        predictBtn.setBounds(437, 13, 138, 36);
-        predictBtn.setToolTipText("Realizar predicción");
-        panelButtons.add(predictBtn);
-
-        saveBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                if(validateDataSelector() && validDataFloat()){
-                    System.out.println("Todo correcto");
-                    JOptionPane.showMessageDialog(null, "Se guardo correctamente", "Error", JOptionPane.INFORMATION_MESSAGE);
-
-                }else {
-                    System.out.println("Datos incorrectos");
-                    JOptionPane.showMessageDialog(null, "Se dejo algun dato(s) vacio", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-
-            }
-        });
-
-        predictBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                if(validateDataSelector() && validDataFloat()){
-                    System.out.println("Todo correcto");
-                    JOptionPane.showMessageDialog(null, "Se predijo correctamente", "Error", JOptionPane.INFORMATION_MESSAGE);
-
-                }else {
-                    System.out.println("Datos incorrectos");
-                    JOptionPane.showMessageDialog(null, "Se dejo algun dato(s) vacio", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-
-
 
     }
 
     public JPanel getButtonsPanel() { return panelButtons; }
-
-    private boolean validDataFloat(){
-         if(heartrateText.getText().toString().equals("")
-                || hdlText.getText().toString().equals("")
-                || cholesterolText.getText().toString().equals("")
-                || bloodpText.getText().toString().equals("")){
-             System.out.println("ERROR: Datos vacio");
-             return false;
-         }
-         System.out.println("Correcto");
-         return true;
-    }
-
-    private boolean validateDataSelector(){
-        if((!smokerNo.isSelected() && !smokerYes.isSelected())
-                || (!diabetesNo.isSelected() && !diabetesYes.isSelected())
-                || (!hyperNo.isSelected() && !hyperYes.isSelected())
-                || (!sexFemale.isSelected() && !sexMale.isSelected())){
-            System.out.println("ERROR: Datos vacio");
-            return false;
-        }
-        System.out.println("Correcto");
-        return true;
-    }
 
 }
 

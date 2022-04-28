@@ -1,10 +1,12 @@
-package com.sz.gi;
+package com.sz.vista;
+
+import com.sz.vista.Panel;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Window extends JFrame {
     private static final long serialVersionUID = 1L;
+    public Panel mainPanel;
 
     public Window(String windowName, int width, int height) {
         super(windowName);
@@ -14,7 +16,7 @@ public class Window extends JFrame {
         this.setBounds(300, 100, 763, 654);
         setResizable(false);
 
-        Panel mainPanel = new Panel();
+        mainPanel = new Panel();
         mainPanel.setTitlePanel();
         mainPanel.setOptionsPanel();
         mainPanel.setLogoPanel();

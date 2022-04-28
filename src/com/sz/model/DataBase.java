@@ -1,4 +1,4 @@
-package com.sz.gi;
+package com.sz.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,13 +15,14 @@ public class DataBase{
     public DataBase(){
 
         try{
-
             Class.forName(driver);
             // Gestiona la conexión a la BD
             conn = DriverManager.getConnection(url,user,password);
+            /*
             if (conn != null){
-                JOptionPane.showMessageDialog(null, "Se conecto Primavera 2022","Mens",JOptionPane.INFORMATION_MESSAGE);
+                //JOptionPane.showMessageDialog(null, "Se conecto Primavera 2022","Mens",JOptionPane.INFORMATION_MESSAGE);
             }
+            */
         }catch (ClassNotFoundException | SQLException e){
             System.out.println("Código de Error: " + ((SQLException) e).getErrorCode() + "\n" +
                     "SLQState: " + ((SQLException) e).getSQLState() + "\n" +
